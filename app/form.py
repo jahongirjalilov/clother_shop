@@ -7,13 +7,12 @@ from django.template.loader import render_to_string
 from django.utils.encoding import force_bytes
 from django.utils.http import urlsafe_base64_encode
 
-from app.models import Product, User
+from app.models import Product, User, Contact
 from app.token import account_activation_token
 from root.settings import EMAIL_HOST_USER
 
 
 class ProductModelForm(ModelForm):
-
     class Meta:
         model = Product
         fields = '__all__'
@@ -80,7 +79,6 @@ class ForgotPasswordForm(forms.Form):
     #     result = send_mail(subject, message, from_email, recipient_list)
     #     print(result)
 
-
     # def send_email(self):
     #     email = EMAIL_HOST_USER
     #     subject = 'Shok xabar'
@@ -90,8 +88,8 @@ class ForgotPasswordForm(forms.Form):
     #     result = send_mail(subject, message, from_email, recipient_list)
     #     print(result)
 
-def send_email(email, request, _type):
 
+def send_email(email, request, _type):
     user = User.objects.get(email=email)
     subject = 'Activate your account'
     current_site = get_current_site(request)
@@ -107,3 +105,10 @@ def send_email(email, request, _type):
 
     send_mail(subject, message, from_email, recipient_list)
     print('Send to MAIL')
+
+
+class ContactModelForm(ModelForm):
+
+    class Meta:
+        model = Contact
+        fields = '__all__'

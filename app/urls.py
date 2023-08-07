@@ -1,15 +1,15 @@
 from django.urls import path
 
-from app.views import shopping_cart, contact, checkout, create_product, \
+from app.views import shopping_cart, checkout, create_product, \
     update_product, login_view, logout_view, register_view, ForgotPasswordView, new_product, delete_product, \
-    ActivateEmailView, IndexPage, ShopPage, product_details
+    ActivateEmailView, IndexPage, ShopPage, product_details, contact_view
 
 urlpatterns = [
     path('', IndexPage.as_view(), name='index'),
     path('product-details/<int:product_id>', product_details, name='shop-details'),
     path('shop/', ShopPage.as_view(), name='shop'),
     path('shopping-cart/', shopping_cart, name='shopping-cart'),
-    path('contact/', contact, name='contact'),
+    path('contact/', contact_view, name='contact'),
     path('checkout/', checkout, name='checkout'),
 
     path('create-product/', create_product, name='create-product'),

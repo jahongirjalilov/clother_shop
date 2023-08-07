@@ -1,28 +1,26 @@
 import os
 from pathlib import Path
-import environ
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-env = environ.Env(
-    # set casting, default value
-    DEBUG=(bool, False)
-)
+# env = environ.Env(
+#     DEBUG=(bool, False)
+# )
 
 # Set the project base directory
 # BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # Take environment variables from .env file
-environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
+# environ.Env.read_env(os.path.join(BASE_DIR, '.env'))
 
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = env('SECRET_KEY')
-# SECRET_KEY = env('SECRET_KEY')
+SECRET_KEY = ("django-insecure-0w-3(+2e!ut!&a$im)s9+v4+m4sp0hp@371ia%17&a9*q!td25")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -44,7 +42,6 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
-    'environ',
 ]
 
 MIDDLEWARE = [
@@ -135,15 +132,15 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
-EMAIL_HOST_USER = env('EMAIL_HOST_USER')
-EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
+EMAIL_HOST_PASSWORD = ("ztuvvipsaqfpfanh")
+EMAIL_HOST_USER = ('jalilovj098@gmail.com')
 
 AUTHENTICATION_BACKENDS = [
     # Needed to login by username in Django admin, regardless of `allauth`
     'django.contrib.auth.backends.ModelBackend',
 
     # `allauth` specific authentication methods, such as login by e-mail
-    'allauth.account.auth_backends.AuthenticationBackend',
+    # 'allauth.account.auth_backends.AuthenticationBackend',
 ]
 
 SITE_ID = 1
@@ -170,5 +167,3 @@ SOCIALACCOUNT_PROVIDERS = {
 
 LOGIN_URL = '/'
 LOGIN_REDIRECT_URL = '/'
-
-

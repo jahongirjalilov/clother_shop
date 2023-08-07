@@ -67,3 +67,10 @@ class User(AbstractUser):
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
     objects = UserManager()
+
+
+class Contact(models.Model):
+    name = models.CharField(max_length=155)
+    email = models.EmailField()
+    subject = models.CharField(max_length=155)
+    message = models.TextField()

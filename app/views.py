@@ -9,7 +9,7 @@ from django.utils.http import urlsafe_base64_decode
 from django.views.generic import FormView, TemplateView, ListView, DetailView
 
 from app.form import ProductModelForm, LoginForm, RegisterForm, ForgotPasswordForm, send_email
-from app.models import Product, Category, User
+from app.models import Product, Category, User, Contact
 from app.token import account_activation_token
 
 
@@ -67,17 +67,17 @@ def shopping_cart(request):
     return render(request, 'app/shopping_cart.html', context)
 
 
-def contact(request):
-    products = Product.objects.all()
-    if request == 'POST':
-        form = ProductModelForm(request.POST)
-        if form.is_valid():
-            form.save()
+def contact_view(request):
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        subject = request.POST.get('subject')
+        message = request.POST.get('message')
+
+        contact = Contact(name=name, email=email, subject=subject, message=message)
+        contact.save()
         return redirect('index')
-    context = {
-        'products': products
-    }
-    return render(request, 'app/contact.html', context)
+    return render(request, 'app/contact.html')
 
 
 def checkout(request):
